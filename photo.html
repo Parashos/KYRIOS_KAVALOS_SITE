@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Photo Gallery</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <style>
+            /* Στυλ για την Gallery και τα κλικ στις φωτογραφίες */
+            .gallery-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+                padding: 20px 0;
+            }
+            .gallery-container img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+            .gallery-container img:hover {
+                transform: scale(1.03);
+                opacity: 0.9;
+            }
+
+            /* Το παράθυρο προβολής (Modal) όταν πατάς μια φωτογραφία */
+            #imageModal {
+                display: none;
+                position: fixed;
+                z-index: 10000;
+                padding-top: 60px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                text-align: center;
+            }
+            #modalImage {
+                max-width: 90%;
+                max-height: 80vh;
+                margin: auto;
+                display: block;
+                border-radius: 5px;
+            }
+            #closeModal {
+                position: absolute;
+                top: 20px;
+                right: 35px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            #closeModal:hover {
+                color: #ffffff;
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+
+        <!-- Header -->
+            <header id="header">
+                <a class="title">Photo gallery</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="start.html">H ΑΡΧΗ</a></li>
+                        <li><a href="contest.html">Διαγωνισμοι</a></li>
+                        <li><a href="memes.html">memes</a></li>
+                        <li><a href="last.html" >ΤΕΛΙΚΕΣ ΣΚΕΨΕΙΣ</a></li>
+                        <li><a href="photo.html" class="active">Photo gallery</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+        <!-- Wrapper -->
+            <div id="wrapper">
+                <section id="main" class="wrapper">
+                    <div class="inner">
+                        <h1 class="major">ΕΙΜΑΣΤΕ ΦΩΤΟΜΟΝΤΕΛΑΑΑ</h1>
+                        <p>Αυτές είναι μερικές φωτογραφίες από τις καλύτερες στιγμές και εμπειρίες που είχαμε μαζί σας!!</p>
+
+                        <!-- Γκαλερί Εικόνων -->
+                        <div class="gallery-container">
+                            <img src="images/IMG_0167.jpeg" alt="Photo 1" onclick="openModal(this)">
+                            <img src="images/IMG_0473.jpeg" alt="Photo 2" onclick="openModal(this)">
+                            <img src="images/IMG_0532.jpeg" alt="Photo 3" onclick="openModal(this)">
+                            <img src="images/IMG_0533.jpeg" alt="Photo 4" onclick="openModal(this)">
+                            <img src="images/IMG_0596.jpeg" alt="Photo 5" onclick="openModal(this)">
+                            <img src="images/IMG_0688.jpeg" alt="Photo 6" onclick="openModal(this)">
+                            <img src="images/img1.jpg" alt="Photo 7" onclick="openModal(this)">
+                            <img src="images/img2.jpg" alt="Photo 8" onclick="openModal(this)">
+                            <img src="images/kuriosMeRobot.png" alt="Photo 9" onclick="openModal(this)">
+                            <img src="images/sing.png" alt="Photo 10" onclick="openModal(this)">
+                            <img src="images/thanks.jpeg" alt="Photo 11" onclick="openModal(this)">
+                            <img src="images/treno.png" alt="Photo 12" onclick="openModal(this)">
+                        </div>
+                        <div style="margin-top: 40px; margin-bottom: 40px;">
+                                <h2 style="text-align: center; margin-bottom: 20px;">Τα Βίντεό μας</h2>
+                                
+                                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                                    <!-- Βίντεο 1 -->
+                                    <video controls style="width: 100%; max-width: 450px; height: 260px; object-fit: cover; border-radius: 8px; background: #000;">
+                                        <source src="images/video.mp4" type="video/mp4">
+                                        Το πρόγραμμα περιήγησής σας δεν υποστηρίζει την αναπαραγωγή βίντεο.
+                                    </video>
+
+                                    <!-- Βίντεο 2 -->
+                                    <video controls style="width: 100%; max-width: 450px; height: 260px; object-fit: cover; border-radius: 8px; background: #000;">
+                                        <source src="images/video2.MOV" type="video/mp4">
+                                        Το πρόγραμμα περιήγησής σας δεν υποστηρίζει την αναπαραγωγή βίντεο.
+                                    </video>
+                        </div>
+</div>
+                    </div>
+                </section>
+            </div>
+
+        <!-- Modal Popup για την προβολή -->
+        <div id="imageModal">
+            <span id="closeModal" onclick="closeModal()">&times;</span>
+            <img id="modalImage" />
+        </div>
+
+        <!-- Footer -->
+            <footer id="footer" class="wrapper alt">
+                <div class="inner">
+                    <ul class="menu">
+                        <li>&copy; Παράσχος, Δέσποινα :)</li>
+                    </ul>
+                </div>
+            </footer>
+
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+
+            <!-- JavaScript για το άνοιγμα/κλείσιμο της φωτογραφίας -->
+            <script>
+                function openModal(element) {
+                    var modal = document.getElementById("imageModal");
+                    var modalImg = document.getElementById("modalImage");
+                    modal.style.display = "block";
+                    modalImg.src = element.src;
+                }
+
+                function closeModal() {
+                    var modal = document.getElementById("imageModal");
+                    modal.style.display = "none";
+                }
+
+                // Κλείσιμο και με το πλήκτρο ESC στο πληκτρολόγιο
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === "Escape") {
+                        closeModal();
+                    }
+                });
+            </script>
+
+    </body>
+</html>
